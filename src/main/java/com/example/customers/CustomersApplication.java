@@ -8,6 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+import static org.springframework.web.reactive.function.server.ServerResponse.*;
 
 @SpringBootApplication
 public class CustomersApplication {
@@ -19,7 +20,7 @@ public class CustomersApplication {
     @Bean
     RouterFunction<ServerResponse> routes(CustomerRepository repository) {
         return route()
-                .GET("/customers", request -> ServerResponse.ok().body(repository.findAll(), Customer.class))
+                .GET("/customers", request -> ok().body(repository.findAll(), Customer.class))
                 .build();
     }
 }
